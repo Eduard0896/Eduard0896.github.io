@@ -15,8 +15,4 @@ document.addEventListener('DOMContentLoaded', function() {
         
         lastScrollTop = scrollTop;
     });
-
-    // Additional code for your chart or other functionality
-    const chartContainer = document.getElementById('chartContainer');
-    chartContainer.innerHTML = '<p style="text-align:center;">[Chart Placeholder]</p>';
 });
