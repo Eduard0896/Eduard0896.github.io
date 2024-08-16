@@ -1,35 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Extract data from the table
-    const labels = [];
-    const data = [];
+    let lastScrollTop = 0;
+    const sidebar = document.getElementById('sidebar');
 
-    const rows = document.querySelectorAll('tbody tr');
-    rows.forEach(row => {
-        const cols = row.querySelectorAll('td');
-        labels.push(cols[0].innerText);  // Month
-        data.push(parseInt(cols[1].innerText));  // Sales
-    });
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Create the chart
-    const ctx = document.getElementById('salesChart').getContext('2d');
-    const salesChart = new Chart(ctx, {
-        type: 'bar', // Change to 'line', 'pie', etc. for different types of charts
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Monthly Sales',
-                data: data,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down - hide the sidebar
+            sidebar.classList.add('hide');
+        } else {
+            // Scrolling up - show the sidebar
+            sidebar.classList.remove('hide');
         }
+        
+        lastScrollTop = scrollTop;
     });
+
+    // Additional code for your chart or other functionality
+    const chartContainer = document.getElementById('chartContainer');
+    chartContainer.innerHTML = '<p style="text-align:center;">[Chart Placeholder]</p>';
 });
