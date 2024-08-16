@@ -20,7 +20,7 @@ nav li a {
 }
 
 nav li a:hover {
-    background-color: #334756; /* Dark Blue */
+    background-color: #222D37; /* Darker Blue */
     color: white;
 }
 
